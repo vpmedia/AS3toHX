@@ -19,6 +19,7 @@ PUSHD %CD%
 TITLE %~n0
 
 :: STARTUP
-echo Converting...
-del test\hx\Main.hx /Q
-neko bin/As3ToHaxe.n -from test/as3 -to test/hx -useSpaces false
+echo Compiling...
+del bin\As3ToHaxe.n /Q
+haxe -cp src -main As3ToHaxe -neko bin/As3ToHaxe.n
+convert.bat
