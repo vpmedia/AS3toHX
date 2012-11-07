@@ -31,7 +31,7 @@
     <set name="fullscreen" value="1" if="target_android" />
     <set name="fullscreen" value="1" if="target_ios" />
     <set name="BUILD_DIR" value="." /> 
-    <set name="SWF_VERSION" value="10.1" />
+    <set name="SWF_VERSION" value="11.4" />
 
     <!-- You can use the classpath node to include a Haxe source code directory when compiling your project. Set the "name" attribute to the relative or absolute path to your target directory. -->
     <classpath name="." />  
