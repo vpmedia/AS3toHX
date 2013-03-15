@@ -32,9 +32,9 @@
 
 package;
 
-import neko.FileSystem;
+import sys.FileSystem;
 import neko.Lib;
-import neko.Sys;
+//import neko.Sys;
 
 using StringTools;
 using As3ToHaxe;
@@ -44,7 +44,7 @@ using As3ToHaxe;
  */
 class As3ToHaxe
 {
-    public static inline var keys = ["-from", "-to", "-remove", "-useSpaces"];
+    public static var keys = ["-from", "-to", "-remove", "-useSpaces"];
     
     var to:String;
     var from:String; 
@@ -56,7 +56,7 @@ class As3ToHaxe
     
     public static var basePackage:String = "away3d";
     
-    private var nameSpaces:Hash<Ns>;
+    private var nameSpaces:Map<String,Ns>;
     private var maxLoop:Int;
     
     static function main() 
@@ -83,7 +83,7 @@ class As3ToHaxe
             recurse(from);
 
             // to remember namespaces
-            nameSpaces = new Hash();
+            nameSpaces = new Map();
             
             for (item in items)
             {
@@ -116,7 +116,7 @@ class As3ToHaxe
         var dir = toFile.substr(0, toFile.lastIndexOf("/"));
         createFolder(dir);
         
-        var s = neko.io.File.getContent(fromFile);
+        var s = sys.io.File.getContent(fromFile);
         
         /* -----------------------------------------------------------*/
         // space to tabs      
@@ -263,7 +263,7 @@ class As3ToHaxe
             if (r.match(s)) {
                 var ns:Ns = {
                     name : r.matched(4),
-                    classDefs : new Hash()
+                    classDefs : new Map()
                 };
                 nameSpaces.set(ns.name, ns);
                 s = r.replace(s, "//" + r.matched(0).replace("use", "#use") + "\nusing " + basePackage + ".namespace." + ns.name.fUpper() +  ";");
@@ -339,7 +339,7 @@ class As3ToHaxe
                 d.ppg = r.matched(2);
                 if (d.ppg == "") d.ppg = "public";
                 d.name = r.matched(6);
-                d.get = "get" + d.name.substr(0, 1).toUpperCase() + d.name.substr(1);
+                d.get = "get_" + d.name;
                 d.type = r.matched(11);
             }
             
@@ -351,7 +351,7 @@ class As3ToHaxe
                     if (d.name == null) d.name = r.matched(6);
                 d.pps = r.matched(2);
                 if (d.pps == "") d.pps = "public";
-                d.set = "set" + d.name.substr(0, 1).toUpperCase() + d.name.substr(1);
+                d.set = "set_" + d.name;
                 if (d.type == null) d.type = r.matched(12);
             }
             
@@ -411,7 +411,7 @@ class As3ToHaxe
         
         /* -----------------------------------------------------------*/
         
-        var o = neko.io.File.write(toFile, true);
+        var o = sys.io.File.write(toFile, true);
         o.writeString(s);
         o.close();
         
@@ -531,5 +531,5 @@ class As3ToHaxe
 
 typedef Ns = {
     var name:String;
-    var classDefs:Hash<String>;
+    var classDefs:Map<String,String>;
 }

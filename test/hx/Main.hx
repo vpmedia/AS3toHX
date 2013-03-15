@@ -147,13 +147,13 @@ class Main extends MovieClip
 	
 	//Getter/setter
 	
-	public var sampleProperty(getSampleProperty, setSampleProperty):Dynamic;
- 	private function getSampleProperty():Dynamic 
+	public var sampleProperty(get_sampleProperty, set_sampleProperty):Dynamic;
+ 	private function get_sampleProperty():Dynamic 
 	{
 		return _sampleProperty;
 	}
 
-	private function setSampleProperty(value:Dynamic):Void 
+	private function set_sampleProperty(value:Dynamic):Void 
 	{
 		_sampleProperty=value;
 	}
