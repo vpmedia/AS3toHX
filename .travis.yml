@@ -15,6 +15,7 @@ before_install:
     - mkdir -p ~/.haxe/lib
     - echo ~/.haxe/lib | haxelib setup
     - haxelib install munit || true
+    - mkdir -p bin
 
 script:
     - haxe -cp src -main As3ToHaxe -neko bin/As3ToHaxe.n
