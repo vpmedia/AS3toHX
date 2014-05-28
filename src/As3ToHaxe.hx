@@ -340,7 +340,7 @@ class As3ToHaxe
                 if (d.ppg == "") d.ppg = "public";
                 d.name = r.matched(6);
                 d.get = "get_" + d.name;
-                d.type = r.matched(11);
+                d.type = r.matched(11);             
             }
             
             // set
@@ -352,7 +352,7 @@ class As3ToHaxe
                 d.pps = r.matched(2);
                 if (d.pps == "") d.pps = "public";
                 d.set = "set_" + d.name;
-                if (d.type == null) d.type = r.matched(12);
+                if (d.type == null) d.type = r.matched(12); 
             }
             
             // ERROR
@@ -365,11 +365,12 @@ class As3ToHaxe
             // replace set
             if (d.set != null)
                 s = quickRegR(s, d.pps + "([ ]+)function([ ]+)set([ ]+)" + d.name, "private function " + d.set);
-            
+                                 
             // make haxe getter/setter OR finish
             if (d.get != null || d.set != null) {
                 var gs = (d.ppg != null ? d.ppg : d.pps) + " var " + d.name + "(" + d.get + ", " + d.set + "):" + d.type + ";";
                 s = quickRegR(s, "private function " + (d.get != null ? d.get : d.set), gs + "\n \tprivate function " + (d.get != null ? d.get : d.set));
+                trace("Processing getter/setter: " + d);
             }else {
                 break;
             }
@@ -429,7 +430,7 @@ class As3ToHaxe
     private function buildNameSpaces()
     {
         // build friend namespaces!
-        trace(nameSpaces);
+        //trace("NS: " + nameSpaces);
     }
     
     public static function quickRegR(str:String, reg:String, rep:String, ?regOpt:String = "g"):String

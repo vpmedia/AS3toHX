@@ -126,14 +126,14 @@ package
             }
             
             // test iterate with in  
-            for(var p:String in o)
+            /*for(var p:String in o)
             {
                 trace(p); // prints 'bar'
             }
             for ( var p2 : String in o)
             {
                 trace(p2); // prints 'bar'
-            }
+            }*/
             
             if(o is int)
             {
@@ -193,7 +193,7 @@ package
         {
         }
         
-        public function toString():String
+        public function toClassString():String
         {
             return "[MainString]";
         }

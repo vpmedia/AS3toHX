@@ -41,4 +41,4 @@ before_install:
     - mkdir -p bin
 
 script:
-    - haxe -cp src -main As3ToHaxe -neko bin/As3ToHaxe.n
+    - haxe build.hxml

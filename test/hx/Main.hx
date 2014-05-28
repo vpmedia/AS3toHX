@@ -126,14 +126,14 @@ class Main extends MovieClip
 		}
 		
 		// test iterate with in  
-		for(p in o)
+		/*for(p in o)
 		{
 			trace(p);// prints 'bar'
 		}
 		for(p2 in o)
 		{
 			trace(p2);// prints 'bar'
-		}
+		}*/
 		
 		if(Std.is(o, Int))
 		{
@@ -194,7 +194,7 @@ class Main extends MovieClip
 	{
 	}
 	
-	public function toString():String
+	public function toClassString():String
 	{
 		return "[MainString]";
 	}
