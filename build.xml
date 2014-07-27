@@ -41,12 +41,27 @@
     <!-- BUILD -->    
     <target name="build" depends="clean" description="Builds the project">
         <mkdir dir="bin"/>
+        <echo message="#############################"/>
+        <echo message="Compiling AS3toHX and AS3toJS"/>
+        <echo message="#############################"/>
         <exec executable="haxe">
             <arg line="build.hxml"/>
         </exec> 
+        <echo message="###############"/>
+        <echo message="Testing AS3toHX"/>
+        <echo message="###############"/>
         <exec executable="neko">
             <arg line="bin/As3ToHaxe.n -from test/as3 -to test/hx -useSpaces false"/>
         </exec> 
+        <echo message="###############"/>
+        <echo message="Testing AS3toJS"/>
+        <echo message="###############"/>
+        <exec executable="neko">
+            <arg line="bin/As3ToJavaScript.n -from test/as3 -to test/js -useSpaces false"/>
+        </exec> 
+        <echo message="##################"/>
+        <echo message="Compiling test SWF"/>
+        <echo message="##################"/>
         <exec executable="haxe">
             <arg line="-cp test/hx -main Main -swf bin/Main.swf"/>
         </exec> 

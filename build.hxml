@@ -27,8 +27,15 @@
 #
 
 #######################################
-# Compile Neko binary
+# Compile AS3toHX binary
 #######################################
 -cp src 
 -main As3ToHaxe 
 -neko bin/As3ToHaxe.n
+--next
+#######################################
+# Compile AS3toJS binary
+#######################################
+-cp src 
+-main As3ToJavaScript 
+-neko bin/As3ToJavaScript.n
