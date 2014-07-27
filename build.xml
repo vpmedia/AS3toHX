@@ -36,32 +36,35 @@
     <!-- CLEAN -->    
     <target name="clean" description="Clean the project">
         <delete dir="bin"/>
+        <delete dir="test/hx"/>
+        <delete dir="test/js"/>
+        <delete dir="test/json"/>
         <delete file="test/hx/Main.hx"/>
+        <mkdir dir="bin"/>
     </target>
     <!-- BUILD -->    
-    <target name="build" depends="clean" description="Builds the project">
-        <mkdir dir="bin"/>
-        <echo message="#############################"/>
-        <echo message="Compiling AS3toHX and AS3toJS"/>
-        <echo message="#############################"/>
+    <target name="build" depends="clean,compile,as3tohx,as3tojs,xml2json,swf" description="Builds the project"/>
+    <target name="compile">
         <exec executable="haxe">
             <arg line="build.hxml"/>
         </exec> 
-        <echo message="###############"/>
-        <echo message="Testing AS3toHX"/>
-        <echo message="###############"/>
+    </target>
+    <target name="as3tohx">
         <exec executable="neko">
             <arg line="bin/As3ToHaxe.n -from test/as3 -to test/hx -useSpaces false"/>
         </exec> 
-        <echo message="###############"/>
-        <echo message="Testing AS3toJS"/>
-        <echo message="###############"/>
+    </target>
+    <target name="as3tojs">
         <exec executable="neko">
             <arg line="bin/As3ToJavaScript.n -from test/as3 -to test/js -useSpaces false"/>
         </exec> 
-        <echo message="##################"/>
-        <echo message="Compiling test SWF"/>
-        <echo message="##################"/>
+    </target>
+    <target name="xml2json">
+        <exec executable="neko">
+            <arg line="bin/XML2JSON.n -from test/xml -to test/json -remove true -format true -verbose true"/>
+        </exec> 
+    </target>
+    <target name="swf">        
         <exec executable="haxe">
             <arg line="-cp test/hx -main Main -swf bin/Main.swf"/>
         </exec> 
