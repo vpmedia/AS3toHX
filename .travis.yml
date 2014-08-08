@@ -35,6 +35,7 @@ before_install:
     - mkdir -p ~/.haxe/lib
     - echo ~/.haxe/lib | haxelib setup
     - haxelib install munit || true
+    - haxelib install format || true
     - mkdir -p bin
 
 script:
