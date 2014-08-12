@@ -43,7 +43,7 @@
         <mkdir dir="bin"/>
     </target>
     <!-- BUILD -->    
-    <target name="build" depends="clean,compile,as3tohx,as3tojs,xml2json,swf" description="Builds the project"/>
+    <target name="build" depends="clean,compile,as3tohx,as3tojs,swf" description="Builds the project"/>
     <target name="compile">
         <exec executable="haxe">
             <arg line="build.hxml"/>
@@ -57,11 +57,6 @@
     <target name="as3tojs">
         <exec executable="neko">
             <arg line="bin/As3ToJavaScript.n -from test/as3 -to test/js -useSpaces false"/>
-        </exec> 
-    </target>
-    <target name="xml2json">
-        <exec executable="neko">
-            <arg line="bin/XML2JSON.n -from test/xml -to test/json -remove true -format true -verbose true"/>
         </exec> 
     </target>
     <target name="swf">        

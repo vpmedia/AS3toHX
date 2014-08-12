@@ -13,7 +13,4 @@ Tarwins AS3 to Haxe converter
 
 ## Notes
 
-Including some experimental tools:
-
-* AS3 to JavaScript converter
-* TexturePacker XML to JSON converter
+Including experimental AS3 to JavaScript converter
