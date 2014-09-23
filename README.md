@@ -1,7 +1,5 @@
-Tarwins AS3 to Haxe converter
+Tarwins AS3 to Haxe converter [![Build Status](https://travis-ci.org/haxe-community/AS3toHX.png?branch=master)](https://travis-ci.org/haxe-community/AS3toHX)
 =============================
-
-[![Build Status](https://travis-ci.org/haxe-community/AS3toHX.png?branch=master)](https://travis-ci.org/haxe-community/AS3toHX)
 
 ## Building
 
